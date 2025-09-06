@@ -1,117 +1,131 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Me</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>프로필 — REPLACE_NAME</title>
+
+  <!-- 폰트 + 아이콘 -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #1e1e1e;
-      color: #ddd;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .highlight {
-      color: #6aa9ff;
-    }
-    .card {
-      background-color: #2a2a2a;
-      border-radius: 12px;
-      border: none;
-      margin-bottom: 20px;
-    }
-    .nav-tabs .nav-link {
-      color: #ddd;
-    }
-    .nav-tabs .nav-link.active {
-      background-color: #2a2a2a;
-      border: none;
-      color: #6aa9ff;
-    }
-    .social-icons a {
-      color: #ddd;
-      margin: 0 8px;
-      font-size: 1.5rem;
-      transition: color 0.3s;
-    }
-    .social-icons a:hover {
-      color: #6aa9ff;
-    }
-  </style>
+
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="container py-5">
+<body>
+  <header class="banner"></header>
 
-  <!-- 상단 소개 -->
-  <div class="text-center mb-4">
-    <h2 class="highlight">열정적인 디스코드 매니저</h2>
-    <p>다채로운 경험과 Discord를 통한 소통을 즐기는 청소년</p>
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-discord"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-spotify"></i></a>
-    </div>
-  </div>
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero card">
+      <h1 class="title">REPLACE_NAME</h1>
+      <p class="subtitle">다채로운 경험과 Discord를 통한 소통을 즐기는 열정적인 청소년</p>
 
-  <!-- 탭 메뉴 -->
-  <ul class="nav nav-tabs justify-content-center mb-4" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab">프로필</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="career-tab" data-bs-toggle="tab" data-bs-target="#career" type="button" role="tab">Discord 관리자 경력</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="tmi-tab" data-bs-toggle="tab" data-bs-target="#tmi" type="button" role="tab">TMI</button>
-    </li>
-  </ul>
-
-  <!-- 탭 내용 -->
-  <div class="tab-content">
-    <!-- 프로필 -->
-    <div class="tab-pane fade show active" id="profile" role="tabpanel">
-      <div class="card p-4">
-        <h3 class="text-center highlight">About Me</h3>
-        <hr>
-        <p><strong>실명:</strong> (비공개)</p>
-        <p><strong>별칭:</strong> OrangeBlue</p>
-        <p><strong>성별:</strong> 남</p>
-        <p><strong>국적:</strong> 대한민국</p>
+      <div class="socials" style="margin-top:14px">
+        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" title="Spotify"><i class="fab fa-spotify"></i></a>
+        <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
       </div>
-    </div>
+    </section>
 
-    <!-- 경력 -->
-    <div class="tab-pane fade" id="career" role="tabpanel">
-      <div class="card p-4">
-        <h3 class="text-center highlight">Discord 관리자 경력</h3>
-        <hr>
-        <ul>
-          <li>2023~: 중형 서버 운영 경험</li>
-          <li>2024~: 커뮤니티 서버 관리 (2000명+)</li>
-          <li>봇 설정, 채널 관리, 이벤트 운영 경험 보유</li>
-        </ul>
+    <!-- Tabs -->
+    <nav class="tabs">
+      <a class="tab active" href="index.html"><i class="fa fa-user" style="margin-right:8px"></i>프로필</a>
+      <a class="tab" href="portfolio.html"><i class="fa fa-briefcase" style="margin-right:8px"></i>Discord 관리자 경력</a>
+      <a class="tab" href="posts.html"><i class="fa fa-pen" style="margin-right:8px"></i>포스트</a>
+    </nav>
+
+    <!-- About card -->
+    <section class="card about">
+      <div class="about-left">
+        <img src="images/profile.jpg" alt="프로필 사진">
       </div>
-    </div>
+
+      <div class="about-right">
+        <h2>About Me</h2>
+
+        <div class="info-list">
+          <div class="info-item">
+            <div class="i"><i class="fa fa-id-card"></i></div>
+            <div class="meta"><div class="label">실명</div><div class="value">REPLACE_REALNAME (비공개 가능)</div></div>
+          </div>
+
+          <div class="info-item">
+            <div class="i"><i class="fa fa-user"></i></div>
+            <div class="meta"><div class="label">가명</div><div class="value">REPLACE_NICK</div></div>
+          </div>
+
+          <div class="info-item">
+            <div class="i"><i class="fa fa-birthday-cake"></i></div>
+            <div class="meta"><div class="label">출생</div><div class="value">REPLACE_BIRTH</div></div>
+          </div>
+
+          <div class="info-item">
+            <div class="i"><i class="fa fa-ruler-vertical"></i></div>
+            <div class="meta"><div class="label">신장</div><div class="value">REPLACE_HEIGHT</div></div>
+          </div>
+
+          <div class="info-item">
+            <div class="i"><i class="fa fa-heart"></i></div>
+            <div class="meta"><div class="label">MBTI</div><div class="value">REPLACE_MBTI</div></div>
+          </div>
+
+          <div class="info-item">
+            <div class="i"><i class="fa fa-gamepad"></i></div>
+            <div class="meta"><div class="label">취미</div><div class="value">REPLACE_HOBBY</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- TMI -->
-    <div class="tab-pane fade" id="tmi" role="tabpanel">
-      <div class="card p-4">
-        <h3 class="text-center highlight">TMI</h3>
-        <hr>
-        <ul>
-          <li>카페인 중독 ☕</li>
-          <li>취미: 드론 촬영, 영상 편집</li>
-          <li>좋아하는 색: 파랑 💙</li>
-        </ul>
+    <section class="card">
+      <h2 style="text-align:center;color:var(--accent);margin:0 0 12px;font-size:20px">TMI</h2>
+
+      <div class="tmi-grid">
+        <div class="tmi-card">
+          <h4>가명의 기원</h4>
+          <p>REPLACE_TMI_1 — 짧은 설명을 여기에 넣으세요.</p>
+        </div>
+
+        <div class="tmi-card">
+          <h4>한국어 잘 하는 이유</h4>
+          <p>REPLACE_TMI_2 — 예: 한국어 연습 경험, 배경 등.</p>
+        </div>
+
+        <div class="tmi-card">
+          <h4>디스코드 망령이에요</h4>
+          <p>REPLACE_TMI_3 — 디스코드 관련 활동을 적어주세요.</p>
+        </div>
+
+        <div class="tmi-card">
+          <h4>기타</h4>
+          <p>REPLACE_TMI_4 — 추가로 보여주고 싶은 정보.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div style="max-width:var(--maxw);margin:0 auto;text-align:center">
+      <div class="footer-nav">
+        <a class="btn-mini" href="index.html">프로필</a>
+        <a class="btn-mini" href="portfolio.html">Discord 관리자 경력</a>
+        <a class="btn-mini" href="posts.html">포스트</a>
+      </div>
+
+      <div style="margin-top:6px">
+        <a href="#" style="display:inline-block;margin:0 6px"><i class="fab fa-github" style="font-size:20px;color:#022;"></i></a>
+        <a href="#" style="display:inline-block;margin:0 6px"><i class="fab fa-youtube" style="font-size:20px;color:#022;"></i></a>
+        <a href="#" style="display:inline-block;margin:0 6px"><i class="fab fa-spotify" style="font-size:20px;color:#022;"></i></a>
+        <a href="#" style="display:inline-block;margin:0 6px"><i class="fab fa-discord" style="font-size:20px;color:#022;"></i></a>
+      </div>
+
+      <div style="margin-top:12px;color:rgba(3,32,51,0.9);font-weight:600">
+        © REPLACE_NAME | All Rights Reserved
       </div>
     </div>
-  </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </footer>
 </body>
 </html>
-
