@@ -1,0 +1,228 @@
+:root{
+  --bg:#121212;
+  --paper:#212121;
+  --muted:#9aa9b7;
+  --accent:#6fb0ff;
+  --accent-2:#4da0ff;
+  --card-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  --round:14px;
+  --maxw:1000px;
+  --gap:18px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Poppins', 'Noto Sans KR', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* banner */
+.banner{
+  width:100%;
+  height:220px;
+  background: #bfe6ff url('images/banner.jpg') center/cover no-repeat;
+  border-bottom-left-radius:18px;
+  border-bottom-right-radius:18px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding-bottom:28px;
+  box-shadow: inset 0 -30px 60px rgba(0,0,0,0.45);
+}
+
+/* center container */
+.container{
+  max-width:var(--maxw);
+  margin: 0 auto;
+  padding: 26px;
+}
+
+/* hero card that overlaps banner */
+.hero {
+  margin-top: -70px;
+  background: linear-gradient(180deg, rgba(20,20,20,0.95), rgba(22,22,22,0.98));
+  border-radius: var(--round);
+  box-shadow: var(--card-shadow);
+  padding: 28px;
+  text-align:center;
+}
+
+/* title & subtitle */
+.hero .title {
+  font-size:28px;
+  color:var(--accent);
+  margin:0;
+  font-weight:700;
+  letter-spacing:0.6px;
+}
+.hero .subtitle{
+  color:var(--muted);
+  margin-top:8px;
+  font-size:14px;
+}
+
+/* social icons */
+.socials {
+  margin-top:16px;
+}
+.socials a{
+  display:inline-flex;
+  width:44px;height:44px;
+  align-items:center;justify-content:center;
+  background: rgba(255,255,255,0.03);
+  margin:0 6px;
+  border-radius:50%;
+  color:var(--muted);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  transition: all .18s ease;
+}
+.socials a:hover{ transform: translateY(-4px); color:var(--accent) }
+
+/* tabs nav style */
+.tabs {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin: 22px 0;
+  padding: 12px;
+}
+.tab {
+  background: #2a2a2a;
+  color:var(--muted);
+  padding:10px 16px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+  font-weight:600;
+}
+.tab.active {
+  background: linear-gradient(180deg, rgba(26,26,26,0.95), rgba(30,30,30,0.95));
+  color:var(--accent);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+/* main cards */
+.card {
+  background: linear-gradient(180deg, rgba(20,20,20,0.95), rgba(24,24,24,0.95));
+  border-radius: 14px;
+  padding:22px;
+  margin-bottom:24px;
+  box-shadow: var(--card-shadow);
+}
+
+/* ABOUT layout */
+.about {
+  display:flex;
+  gap:22px;
+  align-items:flex-start;
+  padding:28px;
+}
+.about-left img{
+  width:150px;height:150px;border-radius:50%;
+  border:6px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  object-fit:cover;
+}
+.about-right { flex:1; }
+.about-right h2{
+  text-align:center;
+  color:var(--accent);
+  margin:0 0 12px;
+  font-size:22px;
+}
+
+/* info list: pill rows like 원본 */
+.info-list {
+  display:grid;
+  gap:12px;
+  grid-template-columns: 1fr;
+}
+.info-item{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background: rgba(10,10,10,0.15);
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.02);
+}
+.info-item .i{
+  width:36px;height:36px;border-radius:8px;
+  background: rgba(15,40,80,0.12);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent);
+  font-size:16px;
+  flex-shrink:0;
+}
+.info-item .meta{
+  display:flex;
+  flex-direction:column;
+}
+.info-item .label{ font-size:13px; color:var(--muted) }
+.info-item .value{ font-weight:600; color:#dfefff }
+
+/* TMI cards grid */
+.tmi-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:18px;
+  margin-top:8px;
+}
+.tmi-card{
+  background:linear-gradient(180deg, rgba(18,18,18,0.95), rgba(28,28,28,0.95));
+  border-radius:12px;
+  padding:16px;
+  border:1px solid rgba(255,255,255,0.02);
+}
+.tmi-card h4{ color:var(--accent); margin:0 0 8px; font-size:16px;}
+.tmi-card p{ color:var(--muted); font-size:14px; margin:0; }
+
+/* big table style for portfolio page */
+.port-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:8px;
+  font-size:14px;
+  color:#cfe8ff;
+}
+.port-table th{
+  background: rgba(15,40,80,0.12);
+  padding:10px;
+  color:var(--accent);
+  text-align:left;
+}
+.port-table td{
+  padding:10px;border-top:1px solid rgba(255,255,255,0.03);
+}
+
+/* footer gradient */
+.footer {
+  margin-top:40px;
+  border-radius: 18px 18px 0 0;
+  padding:30px 20px;
+  background: linear-gradient(135deg, #3aa0ff 0%, #6fb0ff 50%, #6f9ee0 100%);
+  color:#032033;
+  box-shadow: 0 -8px 30px rgba(0,0,0,0.5);
+}
+.footer .footer-nav{
+  display:flex;gap:10px;justify-content:center;margin-bottom:12px;
+}
+.footer .btn-mini{
+  background: rgba(255,255,255,0.15);
+  padding:8px 12px;border-radius:8px;color:#022;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  font-weight:600;
+}
+
+/* responsive */
+@media(max-width:880px){
+  .about{flex-direction:column;align-items:center;text-align:center}
+  .about-left img{width:120px;height:120px}
+  .tmi-grid{grid-template-columns:1fr}
+  .container{padding:16px}
+}
