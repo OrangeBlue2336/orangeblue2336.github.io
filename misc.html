@@ -812,7 +812,7 @@
       .anime-card {
         background: linear-gradient(135deg, rgba(25,25,25,0.95), rgba(35,35,35,0.9));
         border-radius: 16px;
-        overflow: hidden;
+        overflow: visible;
         box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         text-align: center;
@@ -839,7 +839,7 @@
     }
 
       .anime-content {
-        padding: 0 15px 10px 15px;
+        padding: 0 10px 10px 10px;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -886,7 +886,95 @@
       .genre-fantasy { background: rgba(255, 51, 153, 0.2); color: #ff3399; }
       .genre-adventure { background: rgba(255, 204, 0, 0.2); color: #ffcc00; }
 
-</style>
+/* 경고 아이콘 툴팁 */
+.warning-icon {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:25px;
+  height:25px;
+  margin-left:6px;
+  position:relative;
+  color:#dc3545;
+  cursor:pointer;
+}
+
+.warning-icon i{
+  font-size:1.5rem;
+  will-change: filter;
+  animation: glowPulse 1.8s infinite;
+}
+
+/* 부드러운 빛 확산 */
+@keyframes glowPulse {
+  0% {
+    filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0.0));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8));
+  }
+  100% {
+    filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0.0));
+  }
+}
+
+.warning-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(30,30,30,0.98), rgba(40,40,40,0.95));
+  border: 1px solid rgba(220, 53, 69, 0.4);
+  border-radius: 8px;
+  padding: 12px 15px;
+  min-width: 250px;
+  max-width: 300px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.warning-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(30,30,30,0.98);
+}
+
+.warning-icon:hover .warning-tooltip,
+.warning-icon:active .warning-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.warning-tooltip-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #dc3545;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.warning-tooltip-title i {
+  font-size: 0.9rem;
+}
+
+.warning-tooltip-description {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+  </style>
 </head>
 <body>
   <!-- 모바일 메뉴 버튼 -->
@@ -1117,28 +1205,52 @@
             <div class="anime-card">
               <img src="images/anime1.gif" alt="쓰르라미">
               <div class="anime-content">
-                <h3 class="anime-title">쓰르라미 울 적에 전 시리즈</h3>
-                <div class="anime-genre">
+                <h3 class="anime-title">쓰르라미 울 적에 전 시리즈</h3>                <div class="anime-genre">
                   <span class="genre-tag genre-horror">호러</span>
                   <span class="genre-tag genre-mystery">미스터리</span>
                   <span class="genre-tag genre-suspense">서스펜스</span>
-                </div>
+                  <span class="warning-icon">
+    <i class="fas fa-exclamation-triangle"></i>
+    <div class="warning-tooltip">
+      <div class="warning-tooltip-title">
+        <i class="fas fa-exclamation-triangle"></i>
+        시청에 주의 필요
+      </div>
+      <div class="warning-tooltip-description">
+        폭력적이고 잔인한 장면 포함<br>
+        일부 시리즈 선정적인 장면 포함
+      </div>
+    </div>
+  </span>
+ </div>
                 <p class="anime-description">조용한 시골 마을 히나미자와로 전학 온 주인공 케이이치는 새로운 친구들과 평화로운 일상을 보내기 시작한다. 하지만 매년 열리는 축제 날이 다가올수록 사람이 죽고 사라지는 이상한 사건들이 반복되며, 마을의 금기와 비밀들이 서서히 드러나기 시작한다.</p>
               </div>
-            </div>
+                 </div>
             <div class="anime-card">
               <img src="images/anime2.png" alt="타코피">
               <div class="anime-content">
-                <h3 class="anime-title">타코피의 원죄</h3>
+                <h3 class="anime-title">타코피의 원죄</h3>                
                 <div class="anime-genre">
                   <span class="genre-tag genre-school">학원</span>
                   <span class="genre-tag genre-scifi">SF</span>
                   <span class="genre-tag genre-tragic">피폐</span>
                   <span class="genre-tag genre-suspense">서스펜스</span>
-                </div>
+                  <span class="warning-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="warning-tooltip">
+                      <div class="warning-tooltip-title">
+       <i class="fas fa-exclamation-triangle"></i>
+        시청에 주의 필요
+      </div>
+      <div class="warning-tooltip-description">
+        우울, 자살, 학교폭력 등 민감한 내용 포함
+      </div>
+    </div>
+  </span>  
+</div>
                 <p class="anime-description">행복을 전파하기 위해 지구에 온 해피 성인 타코피는 웃지 않는 소녀 시즈카를 만나 그녀의 미소를 되찾기 위해 여러 해피 도구를 사용해 본다. 하지만 시즈카의 가정 문제, 학교에서의 괴롭힘 등 현실의 어두운 면이 복합적으로 작용하면서 행복을 만드는 일이 생각만큼 단순하지 않음을 깨닫는다.</p>
               </div>
-            </div>
+                  </div>
             <div class="anime-card">
               <img src="images/anime3.gif" alt="일하는 세포">
               <div class="anime-content">
@@ -1151,7 +1263,6 @@
                 <p class="anime-description">우리 몸속의 세포들이 의인화되어 적혈구, 백혈구 등 다양한 세포들이 서로 협력하거나 갈등하면서 인체 내 방어, 산소 운반, 감염 대응 등의 일을 수행하는 이야기. 평소엔 당연하게 지나치는 몸 안의 작은 전쟁과 조화가 살아 움직이는 모습을 보여준다.</p>
           </div>
         </div>
-      </div>
     </section>
   </main>
 
