@@ -376,48 +376,56 @@
     }
 
     /* 개선된 정보 리스트 스타일 */
+    /* 테이블 스타일 정보 리스트 */
     .info-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      display: table;
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
     }
 
     .info-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      position: relative;
+      display: table-row;
+      transition: all 0.3s ease;
     }
 
-    .info-item:last-child {
-      border-bottom: none;
+    .info-item:nth-child(even) {
+      background: rgba(255,255,255,0.02);
     }
 
     .info-item:hover {
-      background: rgba(111,176,255,0.02);
-      margin: 0 -15px;
-      padding: 16px 15px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
+      background: rgba(111,176,255,0.08);
     }
+
+    .info-label,
+    .info-value {
+      display: table-cell;
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      vertical-align: middle;
+    }
+
+    .info-item:last-child .info-label,
+    .info-item:last-child .info-value {
+      border-bottom: none;
+        }
 
     .info-label {
       color: var(--muted);
       font-size: 15px;
-      font-weight: 500;
-      min-width: 80px;
-      margin-right: 20px;
+      font-weight: 600;
+      width: 35%;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 13px;
     }
 
     .info-value {
       color: #e6eef8;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 15px;
-      text-align: right;
-      flex: 1;
       line-height: 1.6;
+      width: 65%;
     }
 
     /* TMI 섹션 - 개선된 스타일 */
@@ -585,6 +593,442 @@
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(111,176,255,0.5);
     }
+
+    /* 모달 기본 스타일 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      opacity: 1;
+    }
+
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(40,40,40,0.9));
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow: auto;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 25px 80px rgba(0,0,0,0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .modal.show .modal-content {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-size: 1.3rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(255,255,255,0.1);
+      color: #e6eef8;
+    }
+
+    /* 게임 프로필 버튼 섹션 */
+    .game-profile-button-section {
+      margin: 50px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .game-profile-button {
+      width: 100%;
+      max-width: 900px;
+      padding: 25px 40px;
+      background: linear-gradient(135deg, rgba(111,176,255,0.15), rgba(77,160,255,0.1));
+      border: 3px solid rgba(111,176,255,0.4);
+      border-radius: 16px;
+      color: var(--accent);
+      font-size: 1.3rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(111,176,255,0.2);
+    }
+
+    .game-profile-button:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(111,176,255,0.2), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .game-profile-button:hover:before {
+      left: 100%;
+    }
+
+    .game-profile-button:hover {
+      background: linear-gradient(135deg, rgba(111,176,255,0.25), rgba(77,160,255,0.15));
+      border-color: rgba(111,176,255,0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(111,176,255,0.4);
+    }
+
+    .game-profile-button i {
+      font-size: 1.5rem;
+    }
+
+    /* 게임 프로필 모달 */
+    .game-profile-modal-content {
+      max-width: 1100px;
+      width: 90%;
+      max-height: 85vh;
+    }
+    
+    @media (max-width: 1200px) {
+      .game-profile-modal-content {
+        max-width: 900px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .game-profile-modal-content {
+        max-width: 95%;
+        width: 95%;
+      }
+    }
+
+    .game-profile-content {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .game-profile-card {
+      background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(30,30,30,0.9));
+      border-radius: 14px;
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .game-profile-card:hover {
+      border-color: rgba(111,176,255,0.2);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    }
+
+    .game-profile-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .game-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .minecraft-icon {
+      background: linear-gradient(135deg, #62a349, #4a7f37);
+    }
+
+    .umamusume-icon {
+      background: linear-gradient(135deg, #ff69b4, #ff1493);
+    }
+
+    .geometry-dash-icon {
+      background: linear-gradient(135deg, #00ff88, #00cc6f);
+    }
+
+    .game-info {
+      flex: 1;
+    }
+
+    .game-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0 0 5px 0;
+    }
+
+    .game-status {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(154,169,183,0.2);
+      color: var(--muted);
+    }
+
+    .game-status.active {
+      background: rgba(40,167,69,0.2);
+      color: #28a745;
+    }
+
+    .game-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .game-detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .detail-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .detail-value {
+      font-size: 0.95rem;
+      color: #e6eef8;
+      font-weight: 500;
+    }
+
+    .profile-link {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .profile-link:hover {
+      color: #7fc0ff;
+    }
+
+    .profile-link i {
+      font-size: 0.75rem;
+    }
+
+    /* 반응형 */
+    @media (max-width: 768px) {
+      .game-profile-button {
+        padding: 20px 30px;
+        font-size: 1.1rem;
+      }
+
+      .game-profile-modal-content {
+        max-width: 95%;
+        max-height: 90vh;
+      }
+
+      .game-details {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 트레이너 명함 컨테이너 */
+    .trainer-cards-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 15px 0 20px 0;
+    }
+
+    /* 트레이너 명함 이미지 */
+    .trainer-card-image {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+      border: 2px solid rgba(255,105,180,0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .trainer-card-image:hover {
+      border-color: rgba(255,105,180,0.4);
+      box-shadow: 0 6px 20px rgba(255,105,180,0.2);
+      transform: translateY(-2px);
+    }
+
+    .trainer-card-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .trainer-card-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .trainer-card-placeholder {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      color: rgba(255,105,180,0.4);
+      gap: 8px;
+      min-height: 150px;
+    }
+
+    .trainer-card-placeholder i {
+      font-size: 2.5rem;
+    }
+
+    .trainer-card-placeholder span {
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    /* 모바일 반응형 */
+    @media (max-width: 768px) {
+      .trainer-cards-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 10px 0 15px 0;
+      }
+
+      .trainer-card-placeholder {
+        padding: 30px 15px;
+        min-height: 120px;
+      }
+
+      .trainer-card-placeholder i {
+        font-size: 2rem;
+      }
+    }
+
+    /* 작은 모바일 화면 (예: iPhone SE) */
+    @media (max-width: 480px) {
+      .trainer-cards-container {
+        gap: 10px;
+      }
+      
+      .trainer-card-image {
+        border-radius: 10px;
+      }
+    }
+
+    /* ID 복사 버튼 */
+    .copy-id-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-left: 8px;
+      background: rgba(111,176,255,0.15);
+      border: 1px solid rgba(111,176,255,0.3);
+      border-radius: 6px;
+      color: var(--accent);
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      vertical-align: middle;
+    }
+
+    .copy-id-btn:hover {
+      background: rgba(111,176,255,0.25);
+      border-color: rgba(111,176,255,0.5);
+      transform: scale(1.1);
+    }
+
+    .copy-id-btn:active {
+      transform: scale(0.95);
+    }
+
+    .copy-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      background: rgba(40,167,69,0.95);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .copy-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: rgba(40,167,69,0.95);
+    }
+
+    .copy-tooltip.show {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+
+    @media (max-width: 768px) {
+      .copy-id-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -701,7 +1145,7 @@
             </div>
             <div class="info-item">
               <span class="info-label">팬덤</span>
-              <span class="info-value">쓰르라미 울 적에<br>타코피의 원죄<br>두근두근 문예부</span>
+              <span class="info-value">쓰르라미 울 적에<br>타코피의 원죄<br>두근두근 문예부<br>우마무스메 프리티 더비</span>
             </div>
           </div>
         </div>
@@ -745,12 +1189,151 @@
               </div>
               <h4>좋아하는 게임/엔터테인먼트</h4>
             </div>
-            <p>게임을 많이 하는 편은 아니에요. 가끔 하는 게임이라면 마인크래프트 정도고, 시간이 날 때는 애니도 즐겨보는 편이에요.</p>
+            <p>최근에 일본의 육성 시뮬레이션 게임인 우마무스메 프리티 더비라는 게임에 푹 빠졌어요. 12월 초에 디스코드 지인의 추천으로 시작했으며, 그 이후로 게임을 즐기고 있는 중이에요.</p>
           </div>
         </div>
+        
+        <!-- 게임 프로필 버튼 섹션 -->
+      <div class="game-profile-button-section">
+        <button class="game-profile-button" onclick="openGameProfileModal()">
+          <i class="fas fa-gamepad"></i>
+          게임 프로필
+        </button>
       </div>
     </section>
   </main>
+
+  <!-- 게임 프로필 모달 -->
+  <div id="gameProfileModal" class="modal">
+    <div class="modal-content game-profile-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">🎮 게임 프로필</h3>
+        <button class="close-btn" onclick="closeGameProfileModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="game-profile-content">
+        <!-- 마인크래프트 -->
+        <div class="game-profile-card">
+          <div class="game-profile-header">
+            <div class="game-icon minecraft-icon">
+              <i class="fas fa-cube"></i>
+            </div>
+            <div class="game-info">
+              <h4 class="game-title">Minecraft</h4>
+              <span class="game-status">가끔 플레이</span>
+            </div>
+          </div>
+          <div class="game-details">
+            <div class="game-detail-item">
+              <span class="detail-label">닉네임</span>
+              <span class="detail-value">Java: OrangeBlue0122</br>Bedrock: OrangeBlue08</span>
+            </div>
+            <div class="game-detail-item">
+              <span class="detail-label">시작일</span>
+              <span class="detail-value">2018년 9월 8일</span>
+            </div>
+            <div class="game-detail-item">
+              <span class="detail-label">주요 활동</span>
+              <span class="detail-value">서바이벌, 건축</span>
+            </div>
+            <div class="game-detail-item">
+              <span class="detail-label">에디션</span>
+              <span class="detail-value">Java, Bedrock Edition</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우마무스메 -->
+        <div class="game-profile-card">
+          <div class="game-profile-header">
+            <div class="game-icon umamusume-icon">
+              <i class="fas fa-horse"></i>
+            </div>
+            <div class="game-info">
+              <h4 class="game-title">우마무스메 프리티 더비</h4>
+              <span class="game-status active">활동 중</span>
+            </div>
+          </div>
+
+          <!-- 트레이너 명함 이미지들 -->
+          <div class="trainer-cards-container">
+            <div class="trainer-card-image">
+              <img src="images/uma-trainer-card-front.png" alt="트레이너 명함 앞면" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="trainer-card-placeholder" style="display: none;">
+                <i class="fas fa-id-card"></i>
+                <span>트레이너 명함 1</span>
+              </div>
+            </div>
+            <div class="trainer-card-image">
+              <img src="images/uma-trainer-card-back.png" alt="트레이너 명함 뒷면" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="trainer-card-placeholder" style="display: none;">
+                <i class="fas fa-id-card"></i>
+                <span>트레이너 명함 2</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-details">
+            <div class="game-detail-item">
+              <span class="detail-label">트레이너명</span>
+              <span class="detail-value">
+                OrangeBlue<br>
+                ID: 677062764787713
+                <button class="copy-id-btn" onclick="copyTrainerID(event)" title="ID 복사">
+                  <i class="fas fa-copy"></i>
+                  <span class="copy-tooltip">복사됨!</span>
+                </button>
+              </span>
+            </div>
+            <div class="game-detail-item">
+              <span class="detail-label">시작일</span>
+              <span class="detail-value">2025년 12월 4일</span>
+            </div>
+            <div class="game-detail-item">
+              <span class="detail-label">주요 활동</span>
+              <span class="detail-value">육성, 팀 레이스</span>
+            </div>
+            <div class="game-detail-item">
+              <span class="detail-label">좋아하는 우마무스메</span>
+              <span class="detail-value">플레이스홀더</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Geometry Dash -->
+        <div class="game-profile-card">
+          <div class="game-profile-header">
+            <div class="game-icon geometry-dash-icon">
+              <i class="fa-solid fa-road-spikes"></i></i>
+            </div>
+            <div class="game-info">
+              <h4 class="game-title">Geometry Dash</h4>
+              <span class="game-status">가끔 플레이</span>
+            </div>
+          </div>
+          <div class="game-details">
+            <div class="game-detail-item">
+              <span class="detail-label">유저명</span>
+              <span class="detail-value">OrangeBlue0122</span>
+            </div>
+            <div class="game-detail-item">
+              <span class="detail-label">시작일</span>
+              <span class="detail-value">2022년 7월 5일</span>
+            </div>
+            <div class="game-detail-item">
+              <span class="detail-label">주요 활동</span>
+              <span class="detail-value">위클리, 데일리 레벨 클리어</br>건틀렛 레벨 클리어</span>
+            </div>
+            <div class="game-detail-item">
+              <span class="detail-label">Hardest</span>
+              <span class="detail-value">Emerald Realm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     function toggleSidebar() {
@@ -767,6 +1350,110 @@
         sidebar.classList.remove('open');
       }
     });
+
+    // 게임 프로필 모달 열기
+    function openGameProfileModal() {
+      const modal = document.getElementById('gameProfileModal');
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      
+      setTimeout(() => {
+        modal.classList.add('show');
+      }, 10);
+    }
+
+    // 게임 프로필 모달 닫기
+    function closeGameProfileModal() {
+      const modal = document.getElementById('gameProfileModal');
+      modal.classList.remove('show');
+      
+      setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+
+    // 모달 외부 클릭시 닫기 (기존 코드에 추가)
+    window.onclick = function(event) {
+      const gameModal = document.getElementById('gameProfileModal');
+      if (event.target === gameModal) {
+        closeGameProfileModal();
+      }
+    }
+
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const gameModal = document.getElementById('gameProfileModal');
+        if (gameModal.classList.contains('show')) {
+          closeGameProfileModal();
+        }
+      }
+    });
+
+    // 트레이너 ID 복사 함수
+    function copyTrainerID(event) {
+      event.stopPropagation(); // 이벤트 전파 방지
+      
+      const trainerID = '677062764787713';
+      const button = event.currentTarget;
+      const tooltip = button.querySelector('.copy-tooltip');
+      
+      // 클립보드에 복사
+      navigator.clipboard.writeText(trainerID).then(() => {
+        // 복사 성공 시 툴팁 표시
+        tooltip.classList.add('show');
+        
+        // 2초 후 툴팁 숨기기
+        setTimeout(() => {
+          tooltip.classList.remove('show');
+        }, 2000);
+      }).catch(err => {
+        console.error('복사 실패:', err);
+        // 복사 실패 시 대체 방법 (구형 브라우저 지원)
+        const textArea = document.createElement('textarea');
+        textArea.value = trainerID;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        
+        try {
+          document.execCommand('copy');
+          tooltip.classList.add('show');
+          setTimeout(() => {
+            tooltip.classList.remove('show');
+          }, 2000);
+        } catch (err) {
+          console.error('대체 복사 방법도 실패:', err);
+        }
+        
+        document.body.removeChild(textArea);
+      });
+    }
   </script>
+
+  <!-- 방문자 카운팅 스크립트 -->
+  <script>
+    (function() {
+      const COUNTER_URL = 'https://profile-visitor-counter.snackcandy105.workers.dev/count';
+      
+      // 페이지 로드 시 카운트 요청
+      fetch(COUNTER_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          page: window.location.pathname,
+          timestamp: new Date().toISOString()
+        })
+      }).catch(err => {
+        // 조용히 실패 처리 (사용자에게 영향 없음)
+        console.debug('Counter request failed');
+      });
+    })();
+  </script>
+</body>
 </body>
 </html>
